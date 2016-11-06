@@ -5,12 +5,11 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Введите название языка для тестирования (deutsch/english/espanol): ");
-
         /*
          * Ввод названия теста
          */
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите название языка для тестирования (deutsch/english/espanol): ");
         String dictionaryName = "";
         try {
             dictionaryName = reader.readLine();
