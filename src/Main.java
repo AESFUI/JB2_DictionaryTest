@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class Main {
@@ -13,7 +14,6 @@ public class Main {
         String dictionaryName = "";
         try {
             dictionaryName = reader.readLine();
-            //reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,10 +83,20 @@ public class Main {
         System.out.println("Укажите куда записать статистику: ");
         try {
             String statFileName = reader.readLine();
-            FileWriter fos = new FileWriter(statFileName);
-            fos.write("Правильных ответов: " + yes);
-            fos.write("Ошибок: " + no);
-            fos.close();
+
+            BufferedWriter bufWriter = new BufferedWriter(
+                    new OutputStreamWriter(
+                            new FileOutputStream(statFileName),
+                            Charset.forName("CP1251")
+                    )
+            );
+
+            bufWriter.write("Для языка " + dictionaryName + " получены результаты:");
+            bufWriter.newLine();
+            bufWriter.write("Правильных ответов: " + yes);
+            bufWriter.newLine();
+            bufWriter.write("Ошибок: " + no);
+            bufWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
