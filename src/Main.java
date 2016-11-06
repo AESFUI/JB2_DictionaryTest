@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -68,9 +65,7 @@ public class Main {
 
                 if (entering.equals("exit")) {
                     break;
-                    //вывод статистики на экран
-                    // запрос пути, куда записать статистику
-                } else if (entering.equals(property.getProperty(word))) {
+                } else if (entering.equals(property.getProperty(word))) { //сверка со словарём
                     yes++;
                 } else {
                     no++;
@@ -85,6 +80,16 @@ public class Main {
         System.out.println("Правильных ответов: " + yes);
         System.out.println("Ошибок: " + no);
 
+        System.out.println("Укажите куда записать статистику: ");
+        try {
+            String statFileName = reader.readLine();
+            FileWriter fos = new FileWriter(statFileName);
+            fos.write("Правильных ответов: " + yes);
+            fos.write("Ошибок: " + no);
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
