@@ -50,17 +50,17 @@ public class Main {
         }
 
         Set<String> dictionarySet = property.stringPropertyNames();
-        String[] dictionaryStringArray = {};
+        String[] dictionaryStringArray;
         dictionaryStringArray = dictionarySet.toArray(new String[dictionarySet.size()]);
 
-        ArrayList<String> dictionaryList = new ArrayList<String>(Arrays.asList(dictionaryStringArray));
+        ArrayList<String> dictionaryList = new ArrayList<>(Arrays.asList(dictionaryStringArray));
 
-        String entering = "";
+        String entering;
         int yes = 0, no = 0;
 
         try {
             while (!dictionaryList.isEmpty()) {
-                String word = dictionaryList.get((int) Math.random() * dictionaryList.size()); //случайный индекс
+                String word = dictionaryList.get((int) (Math.random() * dictionaryList.size())); //случайный индекс
                 System.out.print("Напишите перевод слова " + word + ": ");
 
                 entering = reader.readLine();
@@ -70,7 +70,7 @@ public class Main {
                     break;
                     //вывод статистики на экран
                     // запрос пути, куда записать статистику
-                } else if (entering.equals(property.getProperty(entering))) {
+                } else if (entering.equals(property.getProperty(word))) {
                     yes++;
                 } else {
                     no++;
